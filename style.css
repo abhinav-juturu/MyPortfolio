@@ -509,3 +509,25 @@ body::before{
   .btn { font-size: 0.85rem; height: 2rem; }
 }
 
+/* ========================================================== */
+/* RESPONSIVE SCALING CONTAINER (JS-ASSISTED)                 */
+/* ========================================================== */
+
+.scale-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-origin: center center;
+  background: none;
+}
+
+/* Let .wrapper naturally scale */
+.wrapper {
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+

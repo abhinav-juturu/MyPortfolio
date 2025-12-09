@@ -171,3 +171,25 @@ if (mailLink) {
     }, 1500);
   });
 }
+
+// ===============================
+// Auto Scale Portfolio Book
+// ===============================
+function scaleBook() {
+  const wrapper = document.querySelector('.wrapper');
+  const container = document.querySelector('.scale-container');
+  if (!wrapper || !container) return;
+
+  const designWidth = 1056;  // 66rem * 16px
+  const designHeight = 720;  // 45rem * 16px
+
+  const scaleX = container.clientWidth / designWidth;
+  const scaleY = container.clientHeight / designHeight;
+  const scale = Math.min(scaleX, scaleY);
+
+  wrapper.style.transform = `scale(${scale})`;
+}
+
+// Run on load and resize
+window.addEventListener('load', scaleBook);
+window.addEventListener('resize', scaleBook);
