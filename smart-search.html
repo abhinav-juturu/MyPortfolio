@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart String Search Engine – Project</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .proj-wrap{max-width:1000px;margin:4rem auto;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08);overflow:hidden}
+    .proj-head{padding:1.6rem 2rem;background:linear-gradient(135deg,#00abf0,#37c6ff);color:#fff;display:flex;justify-content:space-between;align-items:center}
+    .proj-body{padding:2rem}
+    .tag{display:inline-block;margin:.25rem .35rem 0 0;padding:.25rem .6rem;border:1px solid var(--main-color);border-radius:999px;font-size:.85rem;color:#067fb0}
+    .section{margin-top:1.4rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .card{border:1px solid #e9f4fb;border-radius:12px;padding:1rem}
+    .muted{color:#666}
+    .btn-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+    .linkbtn{border:1px solid var(--main-color);padding:.55rem .9rem;border-radius:.6rem;color:#067fb0;display:inline-flex;align-items:center;gap:.45rem}
+    .linkbtn:hover{background:var(--main-color);color:#fff}
+    .back{display:inline-flex;align-items:center;gap:.5rem;color:#fff}
+    body{background: url('BG.png') no-repeat center/cover fixed;}
+    body::before{background:rgba(0,12,22,.55)}
+  </style>
+</head>
+<body>
+  <div class="proj-wrap">
+    <div class="proj-head">
+      <a class="back" href="index.html"><i class="bx bx-arrow-back"></i> Back to Portfolio</a>
+      <h2>Smart String Search Engine</h2>
+      <span></span>
+    </div>
+    <div class="proj-body">
+      <div class="section">
+        <div class="tag">C++</div><div class="tag">Trie</div><div class="tag">Binary Search Tree</div><div class="tag">Algorithm Design</div>
+      </div>
+
+      <div class="section grid">
+        <div class="card">
+          <h3>Overview</h3>
+          <p class="muted">A prefix-based search system that mimics real-time suggestions. Queries are served with low latency using a Trie for prefix lookup and a BST to keep suggestions ranked/organized.</p>
+        </div>
+        <div class="card">
+          <h3>Highlights</h3>
+          <ul class="muted">
+            <li>O(L) prefix lookup via Trie; suggestions assembled in ranked order</li>
+            <li>Optimized memory layout and iterative traversals</li>
+            <li>Handles add/remove terms and frequency-based ranking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section grid">
+        <div class="card">
+          <h3>Tech Stack</h3>
+          <ul class="muted">
+            <li>C++17, STL</li>
+            <li>Trie (prefix tree), BST for ranking</li>
+            <li>Unit-tested modules for insert/search/delete</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>My Role</h3>
+          <ul class="muted">
+            <li>Data structure design & complexity analysis</li>
+            <li>Implemented traversal & ranking logic</li>
+            <li>Benchmarks and profiling</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <div class="btn-row">
+        <a class="linkbtn" href="#" target="_blank"><i class="bx bxl-github"></i> Repository</a>
+        <a class="linkbtn" href="#" target="_blank"><i class="bx bx-play-circle"></i> Demo (optional)</a>
+        <a class="linkbtn" href="index.html#turn-2"><i class="bx bx-book"></i> Open in Book</a>
+      </div> -->
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Traffic Monitoring (CI) – Project</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .proj-wrap{max-width:1000px;margin:4rem auto;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08);overflow:hidden}
+    .proj-head{padding:1.6rem 2rem;background:linear-gradient(135deg,#00abf0,#37c6ff);color:#fff;display:flex;justify-content:space-between;align-items:center}
+    .proj-body{padding:2rem}
+    .tag{display:inline-block;margin:.25rem .35rem 0 0;padding:.25rem .6rem;border:1px solid var(--main-color);border-radius:999px;font-size:.85rem;color:#067fb0}
+    .section{margin-top:1.4rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .card{border:1px solid #e9f4fb;border-radius:12px;padding:1rem}
+    .muted{color:#666}
+    .btn-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+    .linkbtn{border:1px solid var(--main-color);padding:.55rem .9rem;border-radius:.6rem;color:#067fb0;display:inline-flex;align-items:center;gap:.45rem}
+    .linkbtn:hover{background:var(--main-color);color:#fff}
+    .back{display:inline-flex;align-items:center;gap:.5rem;color:#fff}
+    body{background: url('BG.png') no-repeat center/cover fixed;}
+    body::before{background:rgba(0,12,22,.55)}
+  </style>
+</head>
+<body>
+  <div class="proj-wrap">
+    <div class="proj-head">
+      <a class="back" href="index.html"><i class="bx bx-arrow-back"></i> Back to Portfolio</a>
+      <h2>Traffic Monitoring (Computational Intelligence)</h2>
+      <span></span>
+    </div>
+    <div class="proj-body">
+      <div class="section">
+        <div class="tag">Python</div><div class="tag">OpenCV</div><div class="tag">YOLOv10n</div><div class="tag">CNN-GFM</div>
+      </div>
+
+      <div class="section grid">
+        <div class="card">
+          <h3>Overview</h3>
+          <p class="muted">Real-time vehicle detection and congestion analysis using lightweight object detection (YOLOv10n) and a custom CNN-GFM head for robust performance on edge devices.</p>
+        </div>
+        <div class="card">
+          <h3>Highlights</h3>
+          <ul class="muted">
+            <li>Real-time processing on consumer GPU / CPU fallback</li>
+            <li>Tracking + density estimation for congestion grading</li>
+            <li>Modular pipeline with video/file/RTSP inputs</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section grid">
+        <div class="card">
+          <h3>Tech Stack</h3>
+          <ul class="muted">
+            <li>Python, OpenCV, PyTorch</li>
+            <li>YOLOv10n detector, CNN-GFM classifier</li>
+            <li>On-device pre/post-processing, NMS, ROI masks</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>My Role</h3>
+          <ul class="muted">
+            <li>Model integration + inference optimization</li>
+            <li>Data preparation & evaluation (mAP / F1)</li>
+            <li>Visualization, overlays, and reporting</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <div class="btn-row">
+        <a class="linkbtn" href="#" target="_blank"><i class="bx bxl-github"></i> Repository</a>
+        <a class="linkbtn" href="#" target="_blank"><i class="bx bx-video-recording"></i> Demo (optional)</a>
+        <a class="linkbtn" href="index.html#turn-2"><i class="bx bx-book"></i> Open in Book</a>
+      </div> -->
+    </div>
+  </div>
+</body>
+</html>
