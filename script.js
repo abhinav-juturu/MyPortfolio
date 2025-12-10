@@ -1,12 +1,17 @@
-// Collect right-side pages
+// =======================================================
+// CORE BOOK ANIMATION LOGIC (From Original Template)
+// =======================================================
+
+const pageTurnBtn = document.querySelectorAll('.nextprev-btn');
 const pages = Array.from(document.querySelectorAll('.book-page.page-right'));
+const backProfileBtn = document.querySelector('.back-profile');
+const contactMeBtn = document.querySelector('.btn.contact-me');
+const viewResumeBtn = document.querySelector('.btn.view-resume');
+const coverRight = document.querySelector('.cover.cover-right');
+let totalPages = pages.length;
 
-// Assign dataset index for tracking
-pages.forEach((p, i) => p.dataset.idx = i);
 
-// ===============================
-// z-index Manager for stable flipping
-// ===============================
+// Z-index Manager for stable flipping
 function layoutPages() {
   const N = pages.length;
   pages.forEach((p, i) => {
@@ -16,7 +21,8 @@ function layoutPages() {
   });
 }
 
-// Helper functions
+
+// Helper functions for turning logic
 function turnPage(pageEl) {
   if (!pageEl.classList.contains('turn')) {
     pageEl.classList.add('turn');
@@ -31,165 +37,115 @@ function unturnPage(pageEl) {
   }
 }
 
-// Initial layout
-layoutPages();
 
-// ===============================
-// Next/Prev Buttons
-// ===============================
-document.querySelectorAll('.nextprev-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const id = btn.getAttribute('data-page');
-    const page = document.getElementById(id);
-    if (!page) return;
+// =======================================================
+// 1. EVENT LISTENERS (Flipping and Buttons)
+// =======================================================
 
-    if (btn.classList.contains('back')) {
-      unturnPage(page);
+// Next/Prev Buttons Logic
+pageTurnBtn.forEach((el) => {
+  el.onclick = () => {
+    const pageTurnId = el.getAttribute('data-page');
+    const pageTurn = document.getElementById(pageTurnId);
+
+    if (el.classList.contains('back')) {
+      unturnPage(pageTurn);
     } else {
-      turnPage(page);
+      turnPage(pageTurn);
     }
-  });
+  }
 });
 
-// ===============================
-// "Contact Me!" Button -> flips to last page
-// ===============================
-const contactMeBtn = document.querySelector('.btn.contact-me');
+
+// "Contact Me!" Button -> flips to last page (Page 6)
 if (contactMeBtn) {
-  contactMeBtn.addEventListener('click', () => {
+  contactMeBtn.onclick = () => {
     pages.forEach((p, i) => {
-      setTimeout(() => turnPage(p), i * 200);
+      // Sequential flipping
+      setTimeout(() => turnPage(p), (i + 1) * 200 + 100);
     });
-  });
+  }
 }
 
-// ===============================
-// Back to Profile Button -> unflips all
-// ===============================
-const backProfileBtn = document.querySelector('.back-profile');
+// "Back to Profile" Button -> unflips all
 if (backProfileBtn) {
-  backProfileBtn.addEventListener('click', () => {
+  backProfileBtn.onclick = () => {
+    // Sequential un-flipping in reverse order
     [...pages].reverse().forEach((p, i) => {
-      setTimeout(() => unturnPage(p), i * 200);
+      setTimeout(() => unturnPage(p), (i + 1) * 200 + 100);
     });
-  });
+  }
 }
 
-// ===============================
-// Opening Animation (Initial Entry)
-// ===============================
-const coverRight = document.querySelector('.cover.cover-right');
-const pageLeft = document.querySelector('.book-page.page-left');
-
-// Step 1: Animate book appearance
-setTimeout(() => {
-  document.querySelector('.wrapper').style.animation = 'show-animate 2s forwards';
-}, 500);
-
-// Step 2: Flip open right cover
-setTimeout(() => {
-  if (coverRight) coverRight.classList.add('turn');
-}, 2100);
-
-// Step 3: Move cover behind
-setTimeout(() => {
-  if (coverRight) coverRight.style.zIndex = -1;
-}, 2800);
-
-// Step 4: Sequentially reset all right pages to initial stack
-pages.forEach((_, index) => {
-  setTimeout(() => {
-    const page = pages[index];
-    page.classList.remove('turn');
-    layoutPages();
-  }, (index + 1) * 200 + 2100);
-});
-
-// ===============================
-// "View Resume" Button
-// ===============================
-const viewResumeBtn = document.querySelector('.btn.view-resume');
+// "View Resume" Button -> Flips specifically to Page 5
 if (viewResumeBtn) {
-  viewResumeBtn.addEventListener('click', () => {
+  viewResumeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
     const p1 = document.getElementById('turn-1');
     const p2 = document.getElementById('turn-2');
     const p3 = document.getElementById('turn-3');
     if (!p1 || !p2 || !p3) return;
 
+    // Sequence: Flip P1 -> Flip P2 -> Flip P3 (to show Page 5)
     turnPage(p1);
     setTimeout(() => turnPage(p2), 220);
     setTimeout(() => {
-      p3.classList.remove('turn'); // show resume front
-      layoutPages();
-    }, 600);
+      unturnPage(p3); // P3's front page is Page 5 (Resume)
+    }, 440);
   });
 }
 
-// ===============================
-// Contact Form (mailto + fallback)
-// ===============================
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
 
-    const name = contactForm.elements['name'].value.trim();
-    const email = contactForm.elements['email'].value.trim();
-    const msg = contactForm.elements['message'].value.trim();
-    if (!name || !email || !msg) return;
+// =======================================================
+// 2. OPENING ANIMATION (Initial Entry)
+// =======================================================
 
-    const to = 'juturnagaabhinavasai@gmail.com';
-    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+// Step 1: Flip open right cover
+setTimeout(() => {
+  if (coverRight) coverRight.classList.add('turn');
+}, 2100);
 
-    setTimeout(() => {
-      alert("If your email app didn't open, please contact me directly at: " + to);
-    }, 1500);
-  });
-}
+// Step 2: Move cover behind
+setTimeout(() => {
+  if (coverRight) coverRight.style.zIndex = -1;
+}, 2800);
 
-// ===============================
-// Phone & Mail Icon Fallbacks
-// ===============================
-const phoneLink = document.querySelector('a[href^="tel:"]');
-if (phoneLink) {
-  phoneLink.addEventListener('click', function (e) {
-    const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-    if (!isMobile) {
-      e.preventDefault();
-      alert("📞 Call me at: +91 81423 88150");
-    }
-  });
-}
 
-const mailLink = document.querySelector('a[href^="mailto:"]');
-if (mailLink) {
-  mailLink.addEventListener('click', function () {
-    setTimeout(() => {
-      alert("📧 Email me at: juturnagaabhinavasai@gmail.com");
-    }, 1500);
-  });
-}
+// Step 3: Sequentially reset all right pages to initial stack
+// This creates the effect of the pages fanning open and then settling closed.
+pages.forEach((page, index) => {
+  setTimeout(() => {
+    page.classList.remove('turn');
+    layoutPages();
+  }, (index + 1) * 200 + 2100)
+});
 
-// ===============================
-// Auto Scale Portfolio Book
-// ===============================
+
+// =======================================================
+// 3. RESPONSIVE SCALING FIX (The core solution)
+// =======================================================
+
 function scaleBook() {
   const wrapper = document.querySelector('.wrapper');
   const container = document.querySelector('.scale-container');
   if (!wrapper || !container) return;
 
-  const designWidth = 1056;  // 66rem * 16px
-  const designHeight = 720;  // 45rem * 16px
+  // Fixed book dimensions (1056px x 720px)
+  const designWidth = 1056;
+  const designHeight = 720;
 
+  // Calculate scale factor based on container size
   const scaleX = container.clientWidth / designWidth;
   const scaleY = container.clientHeight / designHeight;
+
+  // Use the smaller scale factor to ensure the entire book fits within the screen
   const scale = Math.min(scaleX, scaleY);
 
+  // Apply the scale transformation to the wrapper
   wrapper.style.transform = `scale(${scale})`;
 }
 
-// Run on load and resize
+// Run scaling on page load and on window resize
 window.addEventListener('load', scaleBook);
 window.addEventListener('resize', scaleBook);

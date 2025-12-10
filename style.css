@@ -1,5 +1,5 @@
 /* ========================================================== */
-/* 1) Global Variables, Fonts, and Reset (Book Template Base) */
+/* 1. Global Variables, Fonts, and Reset (Book Template Base) */
 /* ========================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap');
@@ -15,46 +15,40 @@
 }
 
 :root {
-  /* Color Palette */
-  --bg-color: #0b141c;
+  /* Color Palette (Original Book Template Colors) */
+  --bg-color: #151f28;
+  /* Very Dark Blue/Gray */
   --main-color: #00abf0;
+  /* Bright Cyan/Blue Accent */
   --pages-color: #fff;
+  /* Pure White for pages */
   --text-color: #333;
+  /* Dark text for light pages */
   --second-text-color: #555;
+  /* Muted text on light pages */
   --white-color: #fff;
   --cover-color: #029bca;
+  /* Slightly darker blue for the Cover */
   --border: 0.125rem solid var(--main-color);
   --box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.2);
   --book-width: 66rem;
-  /* 1056px @ 16px base */
+  /* 1056px */
   --book-height: 45rem;
-  /* 720px @ 16px base */
+  /* 720px */
 }
-
-/* ========================================================== */
-/* 2) Background + Layout (Forced 3D Structure)             */
-/* ========================================================== */
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
-  /* Background image from your last CSS */
-  background: url('BG.png') no-repeat center center fixed;
-  background-size: cover;
-
+  background-color: var(--bg-color);
   color: var(--text-color);
   overflow: hidden;
-  scrollbar-width: none;
+  background: url('BG.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
-/* Subtle dark overlay for readability */
 body::before {
   content: "";
   position: fixed;
@@ -63,7 +57,10 @@ body::before {
   z-index: -1;
 }
 
-/* JS-Scaling Container - Ensures the book stays centered and hidden if scaled down */
+/* ========================================================== */
+/* 2. Responsive Scaling Container (JS Controlled)            */
+/* ========================================================== */
+
 .scale-container {
   width: 100vw;
   height: 100vh;
@@ -72,12 +69,10 @@ body::before {
   justify-content: center;
   align-items: center;
   position: relative;
-  transform-origin: center center;
-  background: none;
 }
 
 .wrapper {
-  /* FIXED BOOK DIMENSIONS (These are scaled by JS) */
+  /* FIXED BOOK DIMENSIONS - Scaled by script.js */
   position: relative;
   width: var(--book-width);
   height: var(--book-height);
@@ -86,9 +81,7 @@ body::before {
   animation: show-animate 2s forwards;
   overflow: hidden;
   transform-origin: center center;
-  /* Essential for scaling */
   transition: transform 0.4s ease-in-out;
-  /* Smooth scaling */
 }
 
 @keyframes show-animate {
@@ -111,10 +104,10 @@ body::before {
   left: 0;
   width: 50%;
   height: 100%;
-  background-color: rgba(2, 155, 202, .9);
-  box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
-  border-top-left-radius: .6rem;
-  border-bottom-left-radius: .6rem;
+  background-color: var(--cover-color);
+  box-shadow: 0 0 .6rem rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 0.6rem;
+  border-bottom-left-radius: 0.6rem;
   transform-origin: right;
 }
 
@@ -154,7 +147,7 @@ body::before {
 }
 
 /* ========================================================== */
-/* 3) Profile Page (Left Side) */
+/* 3. Profile Page (Left Side) - Content Styling              */
 /* ========================================================== */
 
 .profile-page {
@@ -168,16 +161,17 @@ body::before {
 .profile-page img {
   max-width: 180px;
   border-radius: 50%;
-  border: .25rem solid var(--main-color);
-  box-shadow: 0 0 15px rgba(0, 171, 240, .6);
+  border: 0.25rem solid var(--main-color);
+  box-shadow: 0 0 15px rgba(0, 171, 240, 0.6);
   margin-bottom: 1rem;
+  /* FIX: Ensure your image is cropped correctly */
   object-fit: cover;
   object-position: 50% 10%;
-  /* Profile photo crop fix */
 }
 
 .profile-page h1 {
   font-size: 1.7rem;
+  /* Reduced size for better fit */
   line-height: 1;
   color: var(--text-color);
 }
@@ -188,7 +182,6 @@ body::before {
   margin-bottom: 1rem;
 }
 
-/* Social Icons */
 .profile-page .social-media {
   margin: .6rem .8rem;
 }
@@ -205,15 +198,12 @@ body::before {
   font-size: 1.3rem;
   color: var(--main-color);
   margin: 0 .2rem;
-  cursor: pointer;
-  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+  transition: .5s;
 }
 
 .profile-page .social-media a:hover {
   background-color: var(--main-color);
   color: var(--white-color);
-  transform: scale(1.1);
-  box-shadow: 0 0 12px rgba(0, 171, 240, .6);
 }
 
 .profile-page p {
@@ -232,6 +222,7 @@ body::before {
   align-items: center;
   gap: .5rem;
   width: 10.5rem;
+  /* Ensure buttons fit content */
   height: 2.4rem;
   background: linear-gradient(135deg, var(--main-color), #37c6ff);
   border: var(--border);
@@ -253,7 +244,7 @@ body::before {
   box-shadow: 0 12px 26px rgba(0, 171, 240, .35);
 }
 
-/* Secondary style for contact button */
+/* Secondary style for Contact button */
 .btn-box .btn:nth-child(2) {
   background: transparent;
   color: var(--main-color);
@@ -266,7 +257,7 @@ body::before {
 }
 
 /* ========================================================== */
-/* 4) Right Pages (Flipping) */
+/* 4. Flipping Pages & Content Layouts                      */
 /* ========================================================== */
 
 .book-page.page-right {
@@ -291,9 +282,8 @@ body::before {
   background: var(--pages-color);
   padding: 1.5rem 2rem;
   color: var(--text-color);
-
-  /* IMPORTANT: remove inner page scrollbars */
   overflow: hidden;
+  /* Prevent native scrollbars from appearing */
   scrollbar-width: none;
 }
 
@@ -355,20 +345,7 @@ body::before {
   text-align: justify;
 }
 
-.workeduc-content .year i {
-  margin-right: .4rem;
-  font-size: 1.2rem;
-}
-
-.number-page {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: 600;
-}
-
-/* Next/Prev Buttons */
+/* Next/Prev Buttons & Page Numbers */
 .nextprev-btn {
   position: absolute;
   bottom: .9rem;
@@ -393,16 +370,20 @@ body::before {
   right: auto;
 }
 
-/* Skills */
+.number-page {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+}
+
+/* Skills Layout */
 .skills-box {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 2rem;
-}
-
-.skills-box .skills-content {
-  flex: 1 1 20rem;
 }
 
 .skills-content h3 {
@@ -431,16 +412,7 @@ body::before {
   transition: .3s ease;
 }
 
-.skills-content .content span:hover {
-  box-shadow: var(--box-shadow);
-}
-
-.skills-content .content span i {
-  color: var(--main-color);
-  font-size: 3rem;
-}
-
-/* Projects */
+/* Projects Layout */
 .portfolio-box {
   margin-top: 2rem;
 }
@@ -455,78 +427,11 @@ body::before {
   border-bottom: none;
 }
 
-.portfolio-box .info-box {
-  margin: 1rem 0 1rem;
-}
-
-.portfolio-box .info-box .info-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: .5rem;
-}
-
-.portfolio-box .info-box .info-title h3 {
-  font-size: 1.3rem;
-  color: var(--text-color);
-}
-
 .portfolio-box .info-box .info-title a {
   display: flex;
   align-items: center;
   color: var(--main-color);
   font-size: 1rem;
-}
-
-.portfolio-box .info-box .info-title a i {
-  margin-left: .3rem;
-}
-
-.portfolio-box .info-box p:nth-of-type(1) {
-  font-weight: 600;
-  color: var(--second-text-color);
-}
-
-.portfolio-box .btn-box {
-  display: flex;
-  justify-content: flex-start;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-/* Contact */
-.contact-box {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.contact-box .field {
-  width: 100%;
-  background-color: transparent;
-  border: var(--border);
-  border-radius: .3rem;
-  padding: .8rem;
-  font-size: 1rem;
-  color: var(--text-color);
-  margin-bottom: 1.5rem;
-}
-
-.contact-box .field::placeholder {
-  color: var(--second-text-color);
-}
-
-.contact-box textarea {
-  resize: none;
-  height: 10rem;
-}
-
-.contact-box .btn {
-  cursor: pointer;
-}
-
-.contact-box .btn:hover {
-  background-color: transparent;
-  color: var(--main-color);
 }
 
 /* Back to Profile chip */
@@ -570,28 +475,9 @@ body::before {
 }
 
 /* ========================================================== */
-/* 5) Responsive (Based on JS Scaling)                        */
+/* 5. Responsive Styling Fallbacks (Used alongside JS Scale)  */
 /* ========================================================== */
 
-.scale-container {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  transform-origin: center center;
-  background: none;
-}
-
-/* Wrapper is scaled by JavaScript */
-.wrapper {
-  transform-origin: center center;
-  transition: transform 0.4s ease-in-out;
-}
-
-/* Fallback for very small adjustments not handled by JS */
 @media (max-width: 768px) {
   .wrapper {
     padding: 1rem;
@@ -602,10 +488,7 @@ body::before {
     padding: 1rem 1.5rem;
   }
 
-  .profile-page img {
-    max-width: 120px;
-  }
-
+  /* Scale down font sizes further if needed, as JS does most of the scaling */
   .profile-page h1 {
     font-size: 2rem;
   }
@@ -616,20 +499,6 @@ body::before {
 
   .profile-page p {
     font-size: .95rem;
-  }
-
-  .workeduc-content h3 {
-    font-size: 1.2rem;
-  }
-
-  .skills-content .content span {
-    width: 5rem;
-    height: 4rem;
-    font-size: .9rem;
-  }
-
-  .skills-content .content span i {
-    font-size: 2.5rem;
   }
 
   .btn {
@@ -645,14 +514,7 @@ body::before {
 }
 
 @media (max-width: 576px) {
-
-  /* Ensured content doesn't break if fixed sizes conflict */
-  .skills-content .content {
-    gap: .5rem;
-  }
-
-  .skills-content .content span {
-    width: 4.5rem;
-    height: 3.5rem;
+  .profile-page h1 {
+    font-size: 1.8rem;
   }
 }
