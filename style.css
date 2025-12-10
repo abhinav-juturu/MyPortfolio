@@ -1,10 +1,10 @@
 /* ========================================================== */
-/* 1) Global Variables, Fonts, and Reset (Book Template Base)  */
+/* 1) Global Variables, Fonts, and Reset (Book Template Base) */
 /* ========================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -24,71 +24,114 @@
   --white-color: #fff;
   --cover-color: #029bca;
   --border: 0.125rem solid var(--main-color);
-  --box-shadow: 0 0 0.8rem rgba(0,0,0,0.2);
+  --box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.2);
+  --book-width: 66rem;
+  /* 1056px @ 16px base */
+  --book-height: 45rem;
+  /* 720px @ 16px base */
 }
 
 /* ========================================================== */
-/* 2) Background + Layout                                     */
+/* 2) Background + Layout (Forced 3D Structure)             */
 /* ========================================================== */
 
-body{
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 
-  /* Background image */
+  /* Background image from your last CSS */
   background: url('BG.png') no-repeat center center fixed;
   background-size: cover;
 
   color: var(--text-color);
-  overflow: hidden;             /* hide any outer scrollbars */
-  scrollbar-width: none;        /* Firefox */
+  overflow: hidden;
+  scrollbar-width: none;
 }
-body::-webkit-scrollbar{ display:none; } /* Chrome/Safari/Edge */
+
+body::-webkit-scrollbar {
+  display: none;
+}
 
 /* Subtle dark overlay for readability */
-body::before{
-  content:"";
+body::before {
+  content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0,12,22,.55);
+  background: rgba(0, 12, 22, .55);
   z-index: -1;
 }
 
-.wrapper{
+/* JS-Scaling Container - Ensures the book stays centered and hidden if scaled down */
+.scale-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  width: 66rem;
-  height: 45rem;
+  transform-origin: center center;
+  background: none;
+}
+
+.wrapper {
+  /* FIXED BOOK DIMENSIONS (These are scaled by JS) */
+  position: relative;
+  width: var(--book-width);
+  height: var(--book-height);
   padding: 2rem;
   perspective: 250rem;
   animation: show-animate 2s forwards;
-  overflow: hidden; /* prevent any inner overflow */
-}
-@keyframes show-animate {
-  0%, 30%{ opacity: 0; transform: rotate(-20deg); }
-  100%   { opacity: 1; transform: rotate(0deg);   }
+  overflow: hidden;
+  transform-origin: center center;
+  /* Essential for scaling */
+  transition: transform 0.4s ease-in-out;
+  /* Smooth scaling */
 }
 
-.cover{
+@keyframes show-animate {
+
+  0%,
+  30% {
+    opacity: 0;
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+.cover {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 50%;
   height: 100%;
-  background-color: rgba(2,155,202,.9);
-  box-shadow: 0 0 1rem rgba(0,0,0,.5);
+  background-color: rgba(2, 155, 202, .9);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
   border-top-left-radius: .6rem;
   border-bottom-left-radius: .6rem;
   transform-origin: right;
 }
-.cover.cover-left{ z-index: -1; }
-.cover.cover-right{
-  z-index: 100;
-  transition: transform 1s cubic-bezier(.645,.045,.355,1);
-}
-.cover.cover-right.turn{ transform: rotateY(180deg); }
 
-.book{
+.cover.cover-left {
+  z-index: -1;
+}
+
+.cover.cover-right {
+  z-index: 100;
+  transition: transform 1s cubic-bezier(.645, .045, .355, 1);
+}
+
+.cover.cover-right.turn {
+  transform: rotateY(180deg);
+}
+
+.book {
   position: relative;
   width: 100%;
   height: 100%;
@@ -96,57 +139,66 @@ body::before{
   perspective: 250rem;
 }
 
-.book .book-page{
+.book .book-page {
   position: absolute;
   width: 50%;
   height: 100%;
   background: var(--pages-color);
-  box-shadow: 0 0 .6rem rgba(0,0,0,0.1);
+  box-shadow: 0 0 .6rem rgba(0, 0, 0, 0.1);
   display: flex;
   padding: 2rem;
 }
-.book-page.page-left{
-  box-shadow: -.6rem .6rem .6rem rgba(0,0,0,0.1);
+
+.book-page.page-left {
+  box-shadow: -.6rem .6rem .6rem rgba(0, 0, 0, 0.1);
 }
 
 /* ========================================================== */
-/* 3) Profile Page (Left Side)                                */
+/* 3) Profile Page (Left Side) */
 /* ========================================================== */
 
-.profile-page{
+.profile-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: var(--text-color);
 }
-.profile-page img{
+
+.profile-page img {
   max-width: 180px;
   border-radius: 50%;
   border: .25rem solid var(--main-color);
-  box-shadow: 0 0 15px rgba(0,171,240,.6);
+  box-shadow: 0 0 15px rgba(0, 171, 240, .6);
   margin-bottom: 1rem;
   object-fit: cover;
   object-position: 50% 10%;
+  /* Profile photo crop fix */
 }
-.profile-page h1{
+
+.profile-page h1 {
   font-size: 1.7rem;
   line-height: 1;
   color: var(--text-color);
 }
-.profile-page h3{
+
+.profile-page h3 {
   color: var(--main-color);
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 /* Social Icons */
-.profile-page .social-media{ margin: .6rem .8rem; }
-.profile-page .social-media a{
+.profile-page .social-media {
+  margin: .6rem .8rem;
+}
+
+.profile-page .social-media a {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 2.5rem; height: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   background: transparent;
   border: var(--border);
   border-radius: 50%;
@@ -156,21 +208,25 @@ body::before{
   cursor: pointer;
   transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
 }
-.profile-page .social-media a:hover{
+
+.profile-page .social-media a:hover {
   background-color: var(--main-color);
   color: var(--white-color);
   transform: scale(1.1);
-  box-shadow: 0 0 12px rgba(0,171,240,.6);
+  box-shadow: 0 0 12px rgba(0, 171, 240, .6);
 }
 
-.profile-page p{
+.profile-page p {
   text-align: justify;
   font-size: 1.1rem;
 }
 
 /* Buttons */
-.profile-page .btn-box{ margin-top: 1.2rem; }
-.btn{
+.profile-page .btn-box {
+  margin-top: 1.2rem;
+}
+
+.btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -184,43 +240,54 @@ body::before{
   color: var(--white-color);
   font-weight: 600;
   margin: 0 1rem;
-  box-shadow: 0 8px 20px rgba(0,171,240,.25);
+  box-shadow: 0 8px 20px rgba(0, 171, 240, .25);
   transition: transform .15s ease, box-shadow .3s ease, background .3s ease;
 }
-.btn i{ font-size: 1.1rem; }
-.btn:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(0,171,240,.35);
+
+.btn i {
+  font-size: 1.1rem;
 }
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0, 171, 240, .35);
+}
+
 /* Secondary style for contact button */
-.btn-box .btn:nth-child(2){
+.btn-box .btn:nth-child(2) {
   background: transparent;
   color: var(--main-color);
   box-shadow: none;
 }
-.btn-box .btn:nth-child(2):hover{
+
+.btn-box .btn:nth-child(2):hover {
   background: var(--main-color);
   color: var(--white-color);
 }
 
 /* ========================================================== */
-/* 4) Right Pages (Flipping)                                   */
+/* 4) Right Pages (Flipping) */
 /* ========================================================== */
 
-.book-page.page-right{
+.book-page.page-right {
   position: absolute;
   right: 0;
   transform-style: preserve-3d;
   transform-origin: left;
-  transition: transform 1s cubic-bezier(.645,.045,.355,1);
+  transition: transform 1s cubic-bezier(.645, .045, .355, 1);
 }
-.book-page.page-right.turn{ transform: rotateY(-180deg); }
+
+.book-page.page-right.turn {
+  transform: rotateY(-180deg);
+}
 
 .book-page .page-front,
-.book-page .page-back{
+.book-page .page-back {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: var(--pages-color);
   padding: 1.5rem 2rem;
   color: var(--text-color);
@@ -229,54 +296,71 @@ body::before{
   overflow: hidden;
   scrollbar-width: none;
 }
+
 .book-page .page-front::-webkit-scrollbar,
-.book-page .page-back::-webkit-scrollbar{ display:none; }
+.book-page .page-back::-webkit-scrollbar {
+  display: none;
+}
 
-.book-page .page-front{ transform: rotateY(0deg) translateZ(1px); }
-.book-page .page-back { transform: rotateY(180deg) translateZ(1px); }
+.book-page .page-front {
+  transform: rotateY(0deg) translateZ(1px);
+}
 
-.title{
+.book-page .page-back {
+  transform: rotateY(180deg) translateZ(1px);
+}
+
+.title {
   text-align: center;
   color: var(--main-color);
   font-size: 2rem;
 }
 
 /* Timeline */
-.workeduc-box{
+.workeduc-box {
   border-left: var(--border);
   margin-top: 2rem;
 }
-.workeduc-box .workeduc-content{
+
+.workeduc-box .workeduc-content {
   position: relative;
   padding-left: 1.6rem;
   padding-bottom: 1.2rem;
 }
-.workeduc-box .workeduc-content::before{
-  content:'';
+
+.workeduc-box .workeduc-content::before {
+  content: '';
   position: absolute;
-  top: 0; left: -.65rem;
-  width: 1.2rem; height: 1.2rem;
+  top: 0;
+  left: -.65rem;
+  width: 1.2rem;
+  height: 1.2rem;
   border-radius: 50%;
   background: var(--main-color);
 }
-.workeduc-content .year{
+
+.workeduc-content .year {
   color: var(--main-color);
   font-size: 1.2rem;
 }
-.workeduc-content h3{
+
+.workeduc-content h3 {
   font-size: 1.4rem;
   margin: .3rem 0;
   color: var(--text-color);
 }
-.workeduc-content p{
+
+.workeduc-content p {
   font-size: 1.15rem;
   text-align: justify;
 }
-.workeduc-content .year i{
+
+.workeduc-content .year i {
   margin-right: .4rem;
   font-size: 1.2rem;
 }
-.number-page{
+
+.number-page {
   position: absolute;
   bottom: 1rem;
   left: 50%;
@@ -285,11 +369,12 @@ body::before{
 }
 
 /* Next/Prev Buttons */
-.nextprev-btn{
+.nextprev-btn {
   position: absolute;
   bottom: .9rem;
   right: 1.5rem;
-  width: 2rem; height: 2rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
   font-size: 2rem;
   color: var(--second-text-color);
@@ -298,76 +383,111 @@ body::before{
   align-items: center;
   transition: .5s;
 }
-.nextprev-btn:hover{ color: var(--main-color); }
-.nextprev-btn.back{ left: 1.5rem; right: auto; }
+
+.nextprev-btn:hover {
+  color: var(--main-color);
+}
+
+.nextprev-btn.back {
+  left: 1.5rem;
+  right: auto;
+}
 
 /* Skills */
-.skills-box{
+.skills-box {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 2rem;
 }
-.skills-box .skills-content{ flex: 1 1 20rem; }
-.skills-content h3{
+
+.skills-box .skills-content {
+  flex: 1 1 20rem;
+}
+
+.skills-content h3 {
   font-size: 1.6rem;
   line-height: 1;
   margin-bottom: 1rem;
   color: var(--main-color);
 }
-.skills-content .content{
+
+.skills-content .content {
   display: flex;
   flex-wrap: wrap;
   gap: .8rem;
 }
-.skills-content .content span{
+
+.skills-content .content span {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 6rem; height: 5rem;
+  width: 6rem;
+  height: 5rem;
   border: var(--border);
   border-radius: .3rem;
   font-weight: 600;
   transition: .3s ease;
 }
-.skills-content .content span:hover{ box-shadow: var(--box-shadow); }
-.skills-content .content span i{
+
+.skills-content .content span:hover {
+  box-shadow: var(--box-shadow);
+}
+
+.skills-content .content span i {
   color: var(--main-color);
   font-size: 3rem;
 }
 
 /* Projects */
-.portfolio-box{ margin-top: 2rem; }
-.portfolio-box .project-item{
+.portfolio-box {
+  margin-top: 2rem;
+}
+
+.portfolio-box .project-item {
   margin-bottom: 2.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.portfolio-box .project-item:last-child{ border-bottom: none; }
-.portfolio-box .info-box{ margin: 1rem 0 1rem; }
-.portfolio-box .info-box .info-title{
+
+.portfolio-box .project-item:last-child {
+  border-bottom: none;
+}
+
+.portfolio-box .info-box {
+  margin: 1rem 0 1rem;
+}
+
+.portfolio-box .info-box .info-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: .5rem;
 }
-.portfolio-box .info-box .info-title h3{
+
+.portfolio-box .info-box .info-title h3 {
   font-size: 1.3rem;
   color: var(--text-color);
 }
-.portfolio-box .info-box .info-title a{
+
+.portfolio-box .info-box .info-title a {
   display: flex;
   align-items: center;
   color: var(--main-color);
   font-size: 1rem;
 }
-.portfolio-box .info-box .info-title a i{ margin-left: .3rem; }
-.portfolio-box .info-box p:nth-of-type(1){
+
+.portfolio-box .info-box .info-title a i {
+  margin-left: .3rem;
+}
+
+.portfolio-box .info-box p:nth-of-type(1) {
   font-weight: 600;
   color: var(--second-text-color);
 }
-.portfolio-box .btn-box{
+
+.portfolio-box .btn-box {
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
@@ -375,8 +495,12 @@ body::before{
 }
 
 /* Contact */
-.contact-box{ margin-top: 2rem; text-align: center; }
-.contact-box .field{
+.contact-box {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.contact-box .field {
   width: 100%;
   background-color: transparent;
   border: var(--border);
@@ -386,131 +510,67 @@ body::before{
   color: var(--text-color);
   margin-bottom: 1.5rem;
 }
-.contact-box .field::placeholder{ color: var(--second-text-color); }
-.contact-box textarea{ resize: none; height: 10rem; }
-.contact-box .btn{ cursor: pointer; }
-.contact-box .btn:hover{
+
+.contact-box .field::placeholder {
+  color: var(--second-text-color);
+}
+
+.contact-box textarea {
+  resize: none;
+  height: 10rem;
+}
+
+.contact-box .btn {
+  cursor: pointer;
+}
+
+.contact-box .btn:hover {
   background-color: transparent;
   color: var(--main-color);
 }
 
 /* Back to Profile chip */
-.back-profile{
+.back-profile {
   position: absolute;
-  bottom: 1.2rem; right: 2rem;
-  width: 2rem; height: 2rem;
+  bottom: 1.2rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
   background-color: transparent;
   border: var(--border);
   border-radius: .3rem;
   font-size: 1.1rem;
   color: var(--main-color);
   display: inline-flex;
-  justify-content: center; align-items: center;
+  justify-content: center;
+  align-items: center;
   transition: .5s;
 }
-.back-profile:hover{
+
+.back-profile:hover {
   background: var(--main-color);
   color: var(--white-color);
 }
-.back-profile p{
+
+.back-profile p {
   position: absolute;
-  top: 0; left: 50%;
+  top: 0;
+  left: 50%;
   transform: translateX(-50%) scale(.5);
   font-size: 1rem;
   opacity: 0;
   transition: .5s;
   color: var(--main-color);
 }
-.back-profile:hover p{
+
+.back-profile:hover p {
   opacity: 1;
   transform: translateX(-50%) scale(1);
   top: -1.8rem;
 }
 
 /* ========================================================== */
-/* 5) Responsive                                              */
-/* ========================================================== */
-
-@media (max-width: 1100px){
-  .wrapper{
-    width: 90%;
-    height: 80vh;
-    max-width: 60rem;
-  }
-}
-
-@media (max-width: 768px){
-  .wrapper{ padding: 1rem; }
-  .book-page .page-front,
-  .book-page .page-back{ padding: 1rem 1.5rem; }
-
-  .profile-page img{ max-width: 120px; }
-  .profile-page h1{ font-size: 2rem; }
-  .profile-page h3{ font-size: 1.2rem; }
-  .profile-page p{ font-size: .95rem; }
-
-  .workeduc-content h3{ font-size: 1.2rem; }
-
-  .skills-content .content span{
-    width: 5rem; height: 4rem; font-size: .9rem;
-  }
-  .skills-content .content span i{ font-size: 2.5rem; }
-
-  .btn{ width: 100%; margin: .4rem 0; }
-  .btn-box{ width: 100%; display: grid; gap: .6rem; }
-}
-
-@media (max-width: 576px){
-  .wrapper{ width: 95%; height: 90vh; }
-}
-
-/* ========================================================== */
-/* AUTO SCALE FOR MOBILE / TABLETS                            */
-/* ========================================================== */
-
-.scale-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-/* Let the book scale down proportionally */
-.wrapper {
-  transform-origin: center center;
-  transition: transform 0.4s ease-in-out;
-}
-
-/* Scaling behavior for smaller screens */
-@media (max-width: 1024px) {
-  .wrapper {
-    transform: scale(0.9);
-  }
-}
-
-@media (max-width: 768px) {
-  .wrapper {
-    transform: scale(0.75);
-  }
-}
-
-@media (max-width: 600px) {
-  .wrapper {
-    transform: scale(0.65);
-  }
-}
-
-@media (max-width: 480px) {
-  .profile-page h1 { font-size: 1.2rem; }
-  .profile-page h3 { font-size: 1rem; }
-  .profile-page p { font-size: 0.85rem; }
-  .btn { font-size: 0.85rem; height: 2rem; }
-}
-
-/* ========================================================== */
-/* RESPONSIVE SCALING CONTAINER (JS-ASSISTED)                 */
+/* 5) Responsive (Based on JS Scaling)                        */
 /* ========================================================== */
 
 .scale-container {
@@ -525,9 +585,74 @@ body::before{
   background: none;
 }
 
-/* Let .wrapper naturally scale */
+/* Wrapper is scaled by JavaScript */
 .wrapper {
   transform-origin: center center;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 }
 
+/* Fallback for very small adjustments not handled by JS */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1rem;
+  }
+
+  .book-page .page-front,
+  .book-page .page-back {
+    padding: 1rem 1.5rem;
+  }
+
+  .profile-page img {
+    max-width: 120px;
+  }
+
+  .profile-page h1 {
+    font-size: 2rem;
+  }
+
+  .profile-page h3 {
+    font-size: 1.2rem;
+  }
+
+  .profile-page p {
+    font-size: .95rem;
+  }
+
+  .workeduc-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .skills-content .content span {
+    width: 5rem;
+    height: 4rem;
+    font-size: .9rem;
+  }
+
+  .skills-content .content span i {
+    font-size: 2.5rem;
+  }
+
+  .btn {
+    width: 100%;
+    margin: .4rem 0;
+  }
+
+  .btn-box {
+    width: 100%;
+    display: grid;
+    gap: .6rem;
+  }
+}
+
+@media (max-width: 576px) {
+
+  /* Ensured content doesn't break if fixed sizes conflict */
+  .skills-content .content {
+    gap: .5rem;
+  }
+
+  .skills-content .content span {
+    width: 4.5rem;
+    height: 3.5rem;
+  }
+}
