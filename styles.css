@@ -385,13 +385,15 @@ section {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     overflow: visible;   
     height: auto; 
+    max-height: none
 }
 
-.project-card p {
-    white-space: normal;     /* allow wrapping */
-    line-height: 1.5;
+.project-card p,
+.project-card h3 {
+    white-space: normal;
+    word-break: normal;
+    line-height: 1.6;
 }
-
 
 /* Contact page – email scaling ONLY */
 .contact-email {
