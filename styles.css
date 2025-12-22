@@ -386,12 +386,12 @@ section {
 }
 
 .project-card p {
-    white-space: nowrap;             /* keep email in one line */
+    white-space: nowrap;             
     max-width: 100%;
     overflow: hidden;
 
-    font-size: clamp(0.85rem, 3.5vw, 1rem);  /* 🔥 auto scales */
-    text-overflow: ellipsis;         /* optional (…) if needed */
+    font-size: clamp(0.85rem, 3.5vw, 1rem);  
+    text-overflow: ellipsis;         
 
     text-align: center;
 }
@@ -487,17 +487,16 @@ section {
     }
 
     #hero h1 {
-    white-space: nowrap;
+    white-space: nowrap;        
     max-width: 100%;
-    overflow: hidden;
 
-    font-size: clamp(1.4rem, 5vw, 2.5rem);
-    letter-spacing: clamp(0.5px, 1vw, 2px);
+    font-size: clamp(1rem, 4vw, 2.5rem);   
+    letter-spacing: clamp(0.3px, 0.8vw, 2px);
 
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
     text-align: center;
     }
+
 }
 
 
