@@ -477,5 +477,6 @@ section {
     white-space: nowrap;                
     font-size: clamp(1.4rem, 5vw, 2.5rem); 
     letter-spacing: 1.5px;
+    text-align: center;
 }
 }
