@@ -385,18 +385,13 @@ section {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.project-card p {
-    white-space: nowrap;             
+/* Contact page – email scaling ONLY */
+.contact-email {
+    white-space: nowrap;
     max-width: 100%;
-    overflow: hidden;
-
-    font-size: clamp(0.85rem, 3.5vw, 1rem);  
-    text-overflow: ellipsis;         
-
+    font-size: clamp(0.85rem, 3.2vw, 1rem);
     text-align: center;
 }
-
-
 
 .project-grid {
     display: grid;
