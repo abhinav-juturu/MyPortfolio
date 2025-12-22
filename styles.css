@@ -383,7 +383,15 @@ section {
     border-radius: 10px;
     border-left: 5px solid var(--color-accent);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    overflow: visible;   
+    height: auto; 
 }
+
+.project-card p {
+    white-space: normal;     /* allow wrapping */
+    line-height: 1.5;
+}
+
 
 /* Contact page – email scaling ONLY */
 .contact-email {
@@ -494,6 +502,8 @@ section {
 
 }
 
-
-
-
+@media (max-width: 480px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
