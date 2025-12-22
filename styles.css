@@ -474,9 +474,21 @@ section {
     }
 
     #hero h1 {
-    white-space: nowrap;                
-    font-size: clamp(1.1rem, 5vw, 2.5rem); 
-    letter-spacing: 1.5px;
+    white-space: nowrap;          /* keep single line */
+    max-width: 100%;
+    overflow: hidden;
+
+    font-size: clamp(1.1rem, 4.5vw, 2.5rem); /* 🔥 smaller on phones */
+    letter-spacing: clamp(0.5px, 1vw, 2px);
+
     text-align: center;
+    }
+
 }
+
+@media (max-width: 480px) {
+    #hero h1 {
+        font-size: 1.15rem;
+        letter-spacing: 0.5px;
+    }
 }
