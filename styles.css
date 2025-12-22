@@ -474,8 +474,8 @@ section {
     }
 
     #hero h1 {
-    white-space: nowrap;                 /* ❌ prevent line break */
-    font-size: clamp(1.4rem, 5vw, 2.5rem); /* 📱 responsive scaling */
+    white-space: nowrap;                
+    font-size: clamp(1.4rem, 5vw, 2.5rem); 
     letter-spacing: 1.5px;
 }
 }
