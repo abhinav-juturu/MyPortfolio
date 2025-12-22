@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Juturu Naga Abhinava Sai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button> 
+    
+    <nav class="sidebar-nav">
+        <div class="logo-sidebar">
+            <a href="index.html" class="logo-link">
+                <img src="logo.jpg" alt="Abhinav Custom Logo" class="custom-logo-img">
+            </a>
+            <p style="font-size: 0.8rem; color: var(--color-text-muted);">B.Tech, Computer Science</p>
+        </div>
+        
+        <div class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li> 
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li> 
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="Abhinav_resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+        </div>
+        
+        <!-- <div class="social-links" style="margin-top: auto;"> 
+            <a href="https://github.com/abhinav-juturu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/juturu-naga-abhinava-sai-98a580371/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div> -->
+    </nav>
+
+    <main>
+        <section id="projects" class="animate-on-load">
+            <div class="container">
+                <h2 style="color: var(--color-accent);">Academic Projects Showcase</h2>
+                <p style="margin-bottom: 2rem;">A collection of forward-thinking software solutions demonstrating my experience in algorithms, computational intelligence, blockchain, and full-stack development.</p>
+
+                <div class="project-grid">
+
+                    <article class="project-card hover-lift">
+                        <h3>Smart String Search Engine</h3>
+                        <p>Built a prefix-based string search system using trees and tries that mimics real-time search suggestions.</p>
+                        <br>
+                        <p class="tech-stack"><b>Tools:</b> C++, Trie, Binary Search Tree</p>
+                        <p>Improved suggestion accuracy and reduced search latency through efficient traversal and memory optimization.</p>
+                        <br>
+                        <a href="smart-search.html" class="cta-button">View Details &rarr;</a>
+                    </article>
+                    
+                    <article class="project-card hover-lift">
+                        <h3>Traffic Monitoring Using Computational Intelligence</h3>
+                        <p>Developed a real-time system for vehicle detection and congestion analysis using deep learning and motion modeling.</p>
+                        <br>
+                        <p class="tech-stack"><b>Tools:</b> Python, OpenCV, YOLOv10n, CNN-inspired Model, GFM</p>
+                        <p>Implemented accurate vehicle detection and a lightweight CNN-GFM congestion detection model.</p>
+                        <br>
+                        <a href="traffic-monitor.html" class="cta-button">View Details &rarr;</a>
+                    </article>
+
+                    <article class="project-card hover-lift">
+                        <h3>ValueCentric Supply Chain DApp</h3>
+                        <p>A blockchain web app for transparent and secure pharmaceutical product tracking using smart contracts.</p>
+                        <br>
+                        <p class="tech-stack"><b>Tools:</b> Solidity, Remix IDE, Web3.js, MetaMask, HTML, CSS, JavaScript</p>
+                        <p>Implemented product registration, ownership transfer, and verification features for enhanced supply chain transparency.</p>
+                        <br>
+                        <a href="supplychain-dapp.html" class="cta-button">View Details &rarr;</a>
+                    </article>
+
+                    <article class="project-card hover-lift">
+                        <h3>Fit Zone</h3>
+                        <p>Developed a fitness website offering categorized exercises, nutritional plans, and music integration for workouts.</p>
+                        <br>
+                        <p class="tech-stack"><b>Tools:</b> HTML, CSS, JavaScript, Electron.JS</p>
+                        <p>Enabled personalized fitness experiences with exercise filtering, food tracking, and motivational audio support.</p>
+                        <br>
+                        <a href="fitzone.html" class="cta-button">View Details &rarr;</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const sidebarNav = document.querySelector('.sidebar-nav');
+
+            navToggle.addEventListener('click', () => {
+                sidebarNav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

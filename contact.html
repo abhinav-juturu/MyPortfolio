@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - Abhinav</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button> 
+    
+    <nav class="sidebar-nav">
+        <div class="logo-sidebar">
+            <a href="index.html" class="logo-link">
+                <img src="logo.jpg" alt="Abhinav Custom Logo" class="custom-logo-img">
+            </a>
+            <p style="font-size: 0.8rem; color: var(--color-text-muted);">B.Tech, Computer Science</p>
+        </div>
+        
+        <div class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li> 
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="Abhinav_resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+        </div>
+        
+        <!-- <div class="social-links" style="margin-top: auto;"> 
+            <a href="https://github.com/abhinav-juturu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/juturu-naga-abhinava-sai-98a580371/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div> -->
+    </nav>
+
+    <main>
+        <section id="contact" class="animate-on-load">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: var(--color-accent);">Get In Touch</h2>
+                <p style="margin-bottom: 2rem;">I'm actively looking to collaborate and contribute. Feel free to reach out via email or connect with me on professional networks.</p>
+
+                <div class="project-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <!-- <div class="project-card hover-lift">
+                        <h3>Email (Primary)</h3>
+                        <p>cb.sc.u4cse23563@cb.students.amrita.edu</p>
+                        <a href="mailto:cb.sc.u4cse23563@cb.students.amrita.edu" class="cta-button">Send Email</a>
+                    </div> -->
+                    <div class="project-card hover-lift">
+                        <h3>Email</h3>
+                        <p>juturnagaabhinavasai@gmail.com</p>
+                        <br>
+                        <a href="mailto:juturnagaabhinavasai@gmail.com" class="cta-button">Send Email</a>
+                    </div>
+                    <div class="project-card hover-lift">
+                        <h3>Phone</h3>
+                        <p>+91-8142388150</p>
+                        <br>
+                        <a href="tel:+918142388150" class="cta-button">Call Me</a>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem;">
+                    <h3>Professional Networks</h3>
+                    <p>Connect with me on these platforms:</p>
+                    <br>
+                    <div class="social-links" style="border: none;">
+                        <a href="https://github.com/abhinav-juturu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/juturu-naga-abhinava-sai-98a580371/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const sidebarNav = document.querySelector('.sidebar-nav');
+
+            navToggle.addEventListener('click', () => {
+                sidebarNav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

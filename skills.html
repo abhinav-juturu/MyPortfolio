@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Skills - Abhinav</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button> 
+    
+    <nav class="sidebar-nav">
+        <div class="logo-sidebar">
+            <a href="index.html" class="logo-link">
+                <img src="logo.jpg" alt="Abhinav Custom Logo" class="custom-logo-img">
+            </a>
+            <p style="font-size: 0.8rem; color: var(--color-text-muted);">B.Tech, Computer Science</p>
+        </div>
+        
+        <div class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li> 
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html" class="active">Skills</a></li> 
+                <li><a href="Abhinav_resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+        </div>
+        
+        <!-- <div class="social-links" style="margin-top: auto;"> 
+            <a href="https://github.com/abhinav-juturu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/juturu-naga-abhinava-sai-98a580371/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div> -->
+    </nav>
+
+    <main>
+        <section id="skills" class="animate-on-load">
+            <div class="container">
+                <h2 style="color: var(--color-accent);">Technical Expertise</h2>
+                <p style="margin-bottom: 2rem;">A detailed breakdown of my proficiency across various programming domains, tools, and specialized coursework.</p>
+
+                <div class="project-grid">
+                    <div class="project-card hover-lift">
+                        <h3>Core Programming Languages</h3>
+                        <ul style="list-style-type: '👉 '; margin-left: 20px; color: var(--color-text-light);">
+                            <li>Python</li>
+                            <li>Java (JDK)</li>
+                            <li>C / C++</li>
+                            <li>SQL</li>
+                            <li>JavaScript (incl. HTML5, CSS3)</li>
+                            <li>Solidity (Blockchain)</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card hover-lift">
+                        <h3>Frameworks & Technologies</h3>
+                        <ul style="list-style-type: '🌐 '; margin-left: 20px; color: var(--color-text-light);">
+                            <li>ElectronJS</li>
+                            <li>MERN Stack</li>
+                            <li>Deep Learning (OpenCV, YOLOv10n, CNN-GFM)</li>
+                            <li>Web3.js & MetaMask</li>
+                            <li>Data Structures (Trie, BST)</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card hover-lift">
+                        <h3>Developer Tools & Coursework</h3>
+                        <ul style="list-style-type: '💻 '; margin-left: 20px; color: var(--color-text-light);">
+                            <li>VS Code</li>
+                            <li>Eclipse IDE</li>
+                            <li>Remix IDE</li>
+                            <li>Coursera Smart Contracts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const sidebarNav = document.querySelector('.sidebar-nav');
+
+            navToggle.addEventListener('click', () => {
+                sidebarNav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+/* ==================================== */
+/* 1. Global Variables & Base Styles    */
+/* ==================================== */
+
+:root {
+    /* Color Palette (Deep Blue & Mint Accent) */
+    --color-primary: #0a192f;       /* Deep Navy Blue Background */
+    --color-secondary: #172a45;     /* Sidebar/Card Background */
+    --color-accent: #64ffda;        /* Vibrant Mint Green Accent */
+    --color-text-light: #ccd6f6;    /* Light Gray/Blue Text */
+    --color-text-muted: #8892b0;    /* Muted Gray Text */
+
+    /* Typography - Set both to Montserrat for consistency */
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+    --font-size-base: 1.1rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-text-light);
+    background-color: var(--color-primary);
+    scroll-behavior: smooth;
+    
+    background-image: radial-gradient(circle at 10% 20%, rgba(100, 255, 218, 0.1) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(100, 255, 218, 0.1) 0%, transparent 40%);
+    background-size: cover;
+    background-attachment: fixed;
+    
+    /* Desktop Default: Push main content away from fixed sidebar */
+    padding-left: 280px; 
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-text-light);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-primary);
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h1 span, h2 span {
+    color: var(--color-accent);
+}
+
+/* Utility Class */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 4rem 0;
+}
+
+/* ==================================== */
+/* 2. Animations & Effects              */
+/* ==================================== */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-on-load {
+    animation: fadeIn 1.5s ease-out forwards;
+    opacity: 0; 
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3); /* Mint Glow on Hover */
+}
+
+/* ==================================== */
+/* Soft Skills – Animations & Effects   */
+/* ==================================== */
+
+.soft-skill-card {
+    background-color: var(--color-secondary);
+    border-left: 5px solid var(--color-accent);
+    border-radius: 14px;
+
+    padding: 1.4rem 2.2rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: max-content;          /* 🔥 KEY LINE */
+    max-width: 100%;
+
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    line-height: 1.3;
+
+    white-space: nowrap;         /* 🔥 prevents breaking */
+    text-align: center;
+
+    position: relative;
+
+    opacity: 0;
+    transform: translateY(25px);
+    animation: softSkillFadeUp 0.8s ease forwards;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        letter-spacing 0.3s ease;
+}
+
+
+/* Stagger animation */
+.soft-skill-card:nth-child(1) { animation-delay: 0.2s; }
+.soft-skill-card:nth-child(2) { animation-delay: 0.35s; }
+.soft-skill-card:nth-child(3) { animation-delay: 0.5s; }
+.soft-skill-card:nth-child(4) { animation-delay: 0.65s; }
+.soft-skill-card:nth-child(5) { animation-delay: 0.8s; }
+.soft-skill-card:nth-child(6) { animation-delay: 0.95s; }
+
+/* Hover interaction */
+.soft-skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 0 0 2px rgba(100, 255, 218, 0.35),
+        0 18px 45px rgba(100, 255, 218, 0.45);
+    letter-spacing: 1px;
+}
+
+
+/* Accent bar glow on hover */
+.soft-skill-card:hover {
+    border-left-color: var(--color-accent);
+}
+
+/* Entry animation keyframes */
+@keyframes softSkillFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.soft-skill-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    box-shadow: 0 0 0 rgba(100, 255, 218, 0.3);
+    transition: box-shadow 0.4s ease;
+}
+
+.soft-skill-card:hover::after {
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+}
+
+
+
+/* ==================================== */
+/* 3. Sidebar Navigation                */
+/* ==================================== */
+
+.sidebar-nav {
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--color-secondary);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    transition: left 0.3s ease; /* For mobile slide effect */
+}
+
+/* Sidebar Logo Area */
+.logo-sidebar {
+    padding: 0 70px; 
+    margin-bottom: 3rem; 
+    text-align: center;
+}
+
+.logo-link {
+    text-decoration: none;
+    display: block; 
+    width: 140px; 
+    height: 140px; 
+    border-radius: 50%; 
+    overflow: hidden; 
+    background-color: var(--color-primary); 
+    border: 3px solid var(--color-accent); 
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5); 
+    margin: 0 auto 10px auto; 
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.8); 
+}
+
+.custom-logo-img {
+    width: 100%; 
+    height: 100%;
+    object-fit: contain; 
+    display: block;
+    padding: 10px; 
+}
+
+/* Main Navigation Links */
+.main-nav {
+    width: 100%;
+    margin-bottom: auto; 
+}
+
+.main-nav ul {
+    list-style: none;
+    width: 100%;
+}
+
+.main-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.main-nav a {
+    display: block;
+    padding: 1rem 2rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, color 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--color-accent);
+    border-left: 3px solid var(--color-accent);
+}
+
+/* Social Links in Sidebar */
+.social-links {
+    padding: 0 2rem;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    color: var(--color-accent);
+    line-height: 36px;
+    text-align: center;
+    margin: 0 5px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    box-shadow: 0 0 15px var(--color-accent);
+}
+
+/* Mobile Toggle Button (The 3-line bar) */
+.nav-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: var(--color-accent);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1001; 
+    padding: 0.5rem;
+}
+
+/* ==================================== */
+/* 4. Homepage (Hero) Styling           */
+/* ==================================== */
+
+#hero {
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.profile-photo-container {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; 
+    overflow: hidden;
+    background: var(--color-accent);
+    border: 5px solid var(--color-accent);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.7); 
+    margin-bottom: 2rem;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    object-position: 50% 10%; 
+}
+
+#hero h1 {
+    font-size: 2.5rem; 
+    letter-spacing: 2px;
+    margin-top: 0.5rem; 
+    margin-bottom: 0.5rem;
+}
+
+#hero h2 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--color-text-muted);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.25s ease;
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background-color: #83ffd9;
+    transform: translateY(-2px);
+    color: var(--color-primary);
+}
+
+.text-link {
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.text-link:hover {
+    color: var(--color-accent) !important;
+}
+
+/* ==================================== */
+/* 5. General Section & Project Styling */
+/* ==================================== */
+
+.project-card {
+    background-color: var(--color-secondary);
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--color-accent);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Soft Skills Grid – auto size based on text */
+.soft-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(max-content, 1fr));
+    gap: 1.8rem;
+    align-items: stretch;
+}
+
+
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 3rem;
+}
+
+/* ==================================== */
+/* 6. Responsiveness (Mobile Override)  */
+/* ==================================== */
+
+@media (max-width: 992px) {
+    body {
+        /* Remove desktop padding when mobile menu is active */
+        padding-left: 0;
+    }
+    
+    /* Show the hamburger menu button */
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        left: 1rem; /* Positioned near the logo */
+    }
+
+    /* Sidebar: Hidden by default on mobile */
+    .sidebar-nav {
+        left: -280px; /* Slide off-screen */
+        box-shadow: none;
+    }
+    
+    /* Class added by JS to show the menu */
+    .sidebar-nav.active {
+        left: 0; /* Slide on-screen */
+        box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Adjust logo sidebar for clean mobile presentation */
+    .logo-sidebar {
+        padding: 0 2rem;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+
+    .logo-sidebar p,
+    .main-nav {
+        /* Hide nav links and B.Tech text by default (shown only when .active) */
+        display: none; 
+    }
+
+    .sidebar-nav.active .logo-sidebar p,
+    .sidebar-nav.active .main-nav {
+        display: block;
+    }
+    
+    /* Reset main nav styling for mobile view (stacking vertically) */
+    .main-nav ul {
+        flex-direction: column;
+    }
+
+    .main-nav a {
+        border-left: none;
+    }
+    
+    /* Reset main content for mobile */
+    .two-column-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    #hero {
+        padding: 2rem 0;
+    }
+}

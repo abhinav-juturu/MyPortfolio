@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Abhinav</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+
+    <nav class="sidebar-nav">
+        <div class="logo-sidebar">
+            <a href="index.html" class="logo-link">
+                <img src="logo.jpg" alt="Abhinav Custom Logo" class="custom-logo-img">
+            </a>
+            <p style="font-size: 0.8rem; color: var(--color-text-muted);">B.Tech, Computer Science</p>
+        </div>
+
+        <div class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="Abhinav_resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+        </div>
+
+        <!-- <div class="social-links" style="margin-top: auto;"> 
+            <a href="https://github.com/abhinav-juturu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/juturu-naga-abhinava-sai-98a580371/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div> -->
+    </nav>
+
+    <main>
+        <section id="about" class="animate-on-load">
+            <div class="container">
+                <h2 style="color: var(--color-accent);">About Me</h2>
+                <p>I am a dedicated and innovative Computer Science student pursuing a Bachelor of Technology at
+                    Amrita Vishwa Vidyapeetham, Coimbatore. I am passionate about leveraging my hands-on experience in
+                    Java (JDK), C++, Python, and front-end technologies (HTML5, CSS3, JavaScript) to contribute to
+                    forward-thinking software solutions.</p>
+
+                <div style="margin-top: 3rem;">
+                    <h3>Core Philosophy</h3>
+                    <p>I thrive on collaboration, creativity, and continuous learning while aligning with the objectives
+                        of the organization, aiming to leverage my problem-solving abilities to support the growth of
+                        dynamic tech teams.</p>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3>Soft Skills</h3>
+
+                    <div class="project-grid soft-skills-grid">
+                        <div class="project-card soft-skill-card">Communication Skills</div>
+                        <div class="project-card soft-skill-card">Teamwork</div>
+                        <div class="project-card soft-skill-card">Problem-Solving</div>
+                        <div class="project-card soft-skill-card">Adaptability</div>
+                        <div class="project-card soft-skill-card">Leadership</div>
+                        <div class="project-card soft-skill-card">Creativity</div>
+                    </div>
+
+                </div>
+
+
+                <div style="margin-top: 3rem;">
+                    <h3>Education Highlights</h3>
+                    <div class="project-card hover-lift"
+                        style="border-left: 5px solid var(--color-accent); margin-bottom: 1.5rem;">
+                        <h4>Amrita Vishwa Vidyapeetham, Coimbatore</h4>
+                        <p>Bachelor of Technology in Computer Science (2023-Present)<br>
+                            CGPA: 7.50</p>
+                    </div>
+                    <div class="project-card hover-lift" style="border-left: 5px solid var(--color-accent);">
+                        <h4>Narayana Junior College, Hyderabad</h4>
+                        <p>Board of Intermediate Education, Telengana (2023)<br>
+                            Percentage: 97.70%</p>
+                    </div>
+                    <br>
+                    <div class="project-card hover-lift" style="border-left: 5px solid var(--color-accent);">
+                        <h4>RGM International School, Nandyal</h4>
+                        <p>Central Board of Secondary Education (CBSE), Andhra Pradesh<br>
+                            Percentage: 96%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const sidebarNav = document.querySelector('.sidebar-nav');
+
+            navToggle.addEventListener('click', () => {
+                sidebarNav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

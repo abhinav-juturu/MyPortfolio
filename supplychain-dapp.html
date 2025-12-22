@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Supply Chain DApp - Abhinav</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="sidebar-nav">
+        <div class="logo-sidebar">
+            <a href="index.html" class="logo-link">
+                <img src="logo.jpg" alt="Abhinav Custom Logo" class="custom-logo-img">
+            </a>
+            <p style="font-size: 0.8rem; color: var(--color-text-muted);">B.Tech, Computer Science</p>
+        </div>
+        
+        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button> 
+
+        <div class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li> 
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li> <li><a href="skills.html">Skills</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        
+        <div class="social-links" style="margin-top: auto;">
+            <a href="https://github.com/abhinav-juturu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/juturu-naga-abhinava-sai-98a580371/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="project-detail" class="animate-on-load">
+            <div class="container">
+                <p style="color: var(--color-accent); margin-bottom: 0.5rem;"><a href="projects.html">&larr; Back to Projects Index</a></p>
+                
+                <h1>ValueCentric Supply Chain DApp</h1>
+                <h2 style="font-weight: 300; color: var(--color-text-muted);">
+                    Decentralized application for transparent pharmaceutical product tracking.
+                </h2>
+                
+                <div class="two-column-layout" style="margin-top: 3rem;">
+                    
+                    <div>
+                        <div class="project-card hover-lift" style="border-left: 5px solid #ff7f50;">
+                            <h3>The Need for Transparency</h3>
+                            <p>Pharmaceutical supply chains often suffer from a lack of verifiable tracking, leading to issues with counterfeiting and accountability. This project tackled that by using **Blockchain technology** to ensure immutable records.</p>
+                        </div>
+
+                        <div class="project-card hover-lift" style="margin-top: 2rem; border-left: 5px solid var(--color-accent);">
+                            <h3>Key Features Implemented</h3>
+                            <ul style="list-style-type: '🔒 '; margin-left: 20px; color: var(--color-text-light);">
+                                <li>**Product Registration:** Securely logging new products onto the blockchain.</li>
+                                <li>**Ownership Transfer:** Transparently tracking change of hands between distributors.</li>
+                                <li>**Verification:** Enabling end-users to verify product authenticity.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="project-card hover-lift" style="border-left: 5px solid #add8e6;">
+                            <h3>Blockchain & Web3 Stack</h3>
+                            <p>The DApp leverages Ethereum-based tools for decentralized operation:</p>
+                            <p class="tech-stack" style="font-size: 1rem; color: var(--color-accent);">
+                                **Solidity, Remix IDE, Web3.js, MetaMask, HTML, CSS, JavaScript**
+                            </p>
+                            <p>The **Smart Contracts (Solidity)** enforce the rules for registration and transfer, guaranteeing immutability and security.</p>
+                        </div>
+
+                        <div class="project-card hover-lift" style="margin-top: 2rem; border-left: 5px solid #ffcc00;">
+                            <h3>Enhanced Supply Chain Integrity</h3>
+                            <h4 style="color: var(--color-accent); margin-bottom: 0.5rem; font-size: 1.1rem;">Impact Achieved:</h4>
+                            <p>Provided an enhanced level of supply chain **transparency and security**, making it virtually impossible to tamper with product origin or history.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="text-align: center; margin-top: 4rem;">
+                    <a href="[Link to Supply Chain DApp GitHub Repository]" class="cta-button hover-lift" style="font-size: 1.1rem;">View Smart Contract Code &rarr;</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 J. N. A. Sai. | Built with <span>&#10084;</span> and Code.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            navToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
