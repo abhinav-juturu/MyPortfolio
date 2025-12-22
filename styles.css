@@ -500,15 +500,6 @@ section {
     }
 }
 
-@media (max-width: 480px) {
-    .project-card {
-        padding: 1.5rem 1.2rem;
-    }
 
-    .project-card p {
-        font-size: 0.95rem;
-        line-height: 1.4;
-    }
-}
 
 
